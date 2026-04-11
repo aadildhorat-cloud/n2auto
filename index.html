@@ -811,7 +811,7 @@
     }
     
     .logo__icon {
-      width: 36px; height: 36px;
+      width: 36px; height: 26px;
       background: linear-gradient(135deg, var(--accent-vibrant), #00a388);
       border-radius: 10px;
       display: flex; align-items: center; justify-content: center;
@@ -1746,32 +1746,73 @@
     
    /* ===== MOBILE HEADER LAYOUT (768px & below) ===== */
 @media (max-width: 768px) {
-  :root { 
-    --header-height: 110px; /* Taller header to accommodate 2 rows */
+  :root {
+    --header-height: 75px; /* Compact, professional height */
   }
   
   .header {
     height: auto;
-    min-height: 64px;
+    min-height: var(--header-height);
     padding: 0.5rem 1rem;
+    background: rgba(10, 10, 15, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-color);
   }
-  
+
   .header__inner {
     display: grid;
-    grid-template-columns: 1fr auto auto;
+    grid-template-columns: auto auto 1fr;
     grid-template-rows: auto auto;
     align-items: center;
-    gap: 0.5rem 1rem;
+    gap: 0.4rem 0.75rem;
     padding: 0;
+    width: 100%;
+    max-width: var(--container-max);
+    margin: 0 auto;
   }
-  
-  .logo { grid-column: 1; }
-  .hive-badge-link { grid-column: 2; justify-self: end; }
-  
-  .header__actions {
-    display: contents; /* Flattens structure so children join the parent grid */
+
+  /* Flatten header actions for precise grid placement */
+  .header__actions { display: contents; }
+
+  /* 1️⃣ Logo - Optimized for clarity */
+  .logo {
+    grid-column: 1;
+    grid-row: 1;
+    height: auto;
+    line-height: 1;
+    gap: 0.5rem;
   }
-  
+  .logo__image { width: 34px; height: 34px; object-fit: contain; }
+  .logo__main { font-size: 1.1rem; font-weight: 700; letter-spacing: -0.02em; }
+  .logo__sub { font-size: 0.6rem; color: var(--text-muted); display: none; }
+  @media (min-width: 420px) { .logo__sub { display: block; } }
+
+  /* 2️⃣ Hive Badge - Sleek & Unobtrusive */
+  .hive-badge-link {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: start;
+    padding: 4px 8px;
+    border-radius: 20px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  }
+  .hive-icon-svg { width: 12px; height: 12px; margin-right: 4px; }
+  .hive-text { font-size: 10px; font-weight: 800; }
+  .hive-subtext { font-size: 0px; display: none; } /* Hidden on mobile to save space */
+
+  /* 3️⃣ Hamburger - Clean & Touch-Friendly */
+  .hamburger {
+    grid-column: 3;
+    grid-row: 1;
+    justify-self: end;
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    background: var(--card-bg);
+  }
+
+  /* 4️⃣ AI Search - Full width, modern glass style */
   .ai-search {
     grid-column: 1 / -1;
     grid-row: 2;
@@ -1779,24 +1820,28 @@
     max-width: 100%;
     order: 2;
   }
-  
-  .hamburger {
-    grid-column: 3;
-    grid-row: 1;
-    order: 3;
-  }
-  
   .ai-search__input {
-    height: 44px;
-    font-size: var(--text-sm);
-    padding: 0 1rem 0 2.5rem;
+    height: 42px;
+    font-size: 0.9rem;
+    padding: 0 1rem 0 2.75rem;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    color: var(--text-primary);
   }
-  
+  .ai-search__input::placeholder { color: var(--text-muted); }
+  .ai-search__input:focus {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--accent-vibrant);
+    box-shadow: 0 0 0 2px rgba(0, 212, 170, 0.25);
+    outline: none;
+  }
+  .ai-search__icon { left: 0.9rem; width: 16px; height: 16px; color: var(--text-muted); }
   .ai-search__badge { display: none; }
-  
-  /* Keep your existing mobile adjustments below */
+  .ai-search__clear { right: 36px; width: 22px; height: 22px; }
+
+  /* Keep your existing mobile adjustments below this line */
   .logo__main { font-size: var(--text-base); }
-  .logo__sub { display: none; }
   .hero { padding-top: calc(var(--header-height) + 3rem); padding-bottom: 3rem; }
   .hero__title { font-size: var(--text-3xl); }
   .hero__subtitle { font-size: var(--text-base); }
