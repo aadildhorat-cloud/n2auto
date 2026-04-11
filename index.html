@@ -20,6 +20,221 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   
   <style>
+    /* ===== ABOUT BUSINESS SECTION ===== */
+.about-business {
+  background: linear-gradient(135deg, var(--secondary-dark) 0%, var(--primary-dark) 100%);
+  position: relative;
+  overflow: hidden;
+}
+.about-business::before {
+  content: ""; position: absolute; top: -20%; left: -10%;
+  width: 50%; height: 140%;
+  background: radial-gradient(circle, rgba(0, 212, 170, 0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.about-business::after {
+  content: ""; position: absolute; bottom: -20%; right: -10%;
+  width: 50%; height: 140%;
+  background: radial-gradient(circle, rgba(0, 212, 170, 0.04) 0%, transparent 70%);
+  pointer-events: none;
+}
+.about-grid {
+  display: grid; grid-template-columns: 1fr; gap: 3rem;
+  position: relative; z-index: 1;
+}
+@media (min-width: 992px) { .about-grid { grid-template-columns: 1.2fr 0.8fr; } }
+
+.about-content { display: flex; flex-direction: column; gap: 2rem; }
+.about-text h3 {
+  font-family: var(--font-heading); font-size: var(--text-2xl);
+  font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);
+}
+.about-text p {
+  color: var(--text-secondary); font-size: var(--text-base);
+  line-height: 1.7; margin-bottom: 1.25rem;
+}
+.about-stats {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;
+}
+.stat-card {
+  background: var(--card-bg); border: 1px solid var(--border-color);
+  border-radius: var(--border-radius); padding: 1.5rem 1rem;
+  text-align: center; transition: var(--transition);
+}
+.stat-card:hover {
+  transform: translateY(-4px); border-color: var(--accent-vibrant);
+  box-shadow: var(--shadow-md);
+}
+.stat-number {
+  display: block; font-family: var(--font-heading);
+  font-size: var(--text-2xl); font-weight: 700;
+  color: var(--accent-vibrant); margin-bottom: 0.5rem;
+}
+.stat-label { font-size: var(--text-sm); color: var(--text-secondary); font-weight: 500; }
+
+.about-sidebar { display: flex; flex-direction: column; gap: 1.5rem; }
+.about-contact-card {
+  background: var(--card-bg); border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-lg); padding: 1.75rem;
+}
+.about-contact-card h4 {
+  font-family: var(--font-heading); font-size: var(--text-xl);
+  font-weight: 700; margin-bottom: 1.5rem; color: var(--text-primary);
+}
+.contact-item {
+  display: flex; align-items: flex-start; gap: 1rem;
+  padding: 0.85rem 0; border-bottom: 1px solid var(--border-color);
+}
+.contact-item:last-of-type { border-bottom: none; }
+.contact-icon {
+  width: 40px; height: 40px; background: rgba(0, 212, 170, 0.1);
+  border-radius: 10px; display: flex; align-items: center;
+  justify-content: center; font-size: var(--text-lg); flex-shrink: 0;
+}
+.contact-details { display: flex; flex-direction: column; gap: 0.25rem; }
+.contact-details strong {
+  font-size: var(--text-xs); color: var(--text-muted);
+  text-transform: uppercase; letter-spacing: 0.05em;
+}
+.contact-details span, .contact-details a {
+  font-size: var(--text-sm); color: var(--text-primary); line-height: 1.4;
+}
+.contact-details a:hover { color: var(--accent-vibrant); }
+
+.about-map {
+  border-radius: var(--border-radius-lg); overflow: hidden;
+  border: 1px solid var(--border-color); background: var(--card-bg);
+}
+/* ===== RESPONSIVE MAP STYLES ===== */
+.about__map {
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-md);
+  background: var(--card-bg);
+  position: relative;
+}
+
+.map-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4/3; /* Desktop: landscape */
+  background: linear-gradient(45deg, #1a1a25, #252535);
+}
+
+.map-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  filter: brightness(0.95) contrast(1.05); /* Subtle dark mode enhancement */
+  transition: filter 0.3s ease;
+}
+
+.map-wrapper iframe:hover {
+  filter: brightness(1) contrast(1.1);
+}
+
+/* Overlay button for mobile tap-to-open */
+.map-overlay {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  width: calc(100% - 2rem);
+  pointer-events: none; /* Let clicks pass through to map */
+}
+
+.map-link-btn {
+  pointer-events: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(10, 10, 15, 0.92);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 0.6rem 1.25rem;
+  border-radius: 50px;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  text-decoration: none;
+  transition: var(--transition);
+  box-shadow: var(--shadow-sm);
+}
+
+.map-link-btn:hover {
+  background: var(--accent-vibrant);
+  color: var(--primary-dark);
+  border-color: var(--accent-vibrant);
+  transform: translateY(-2px);
+}
+
+.map-address {
+  padding: 1rem 1.5rem;
+  background: var(--card-bg);
+  border-top: 1px solid var(--border-color);
+  text-align: center;
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+}
+
+.map-address strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* ===== MOBILE OPTIMIZATIONS ===== */
+@media (max-width: 768px) {
+  .map-wrapper {
+    aspect-ratio: 3/2; /* Taller on mobile for better visibility */
+  }
+  
+  .map-overlay {
+    bottom: 0.75rem;
+    width: calc(100% - 1.5rem);
+  }
+  
+  .map-link-btn {
+    padding: 0.5rem 1rem;
+    font-size: var(--text-xs);
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .map-address {
+    padding: 0.875rem 1.25rem;
+    font-size: var(--text-xs);
+  }
+}
+
+@media (max-width: 480px) {
+  .map-wrapper {
+    aspect-ratio: 1/1; /* Square on very small screens */
+  }
+  
+  .map-link-btn {
+    font-size: var(--text-xs);
+    padding: 0.45rem 0.9rem;
+  }
+}
+
+/* ===== DARK MODE MAP TWEAKS (Optional) ===== */
+/* If you want a truly dark-styled map, add &style= parameters to the iframe src:
+   ...&style=element:geometry%7Ccolor:0x242f3e&style=element:labels.text.fill%7Ccolor:0x746855...
+   Full dark style generator: https://mapstyle.withgoogle.com/
+*/
+
+@media (max-width: 768px) {
+  .about-stats { grid-template-columns: 1fr; }
+  .about-contact-card { padding: 1.5rem; }
+  .about-map iframe { height: 200px; }
+}
     /* ===== ADVANCED VEHICLE MODAL ===== */
 .vehicle-modal-overlay {
   position: fixed;
@@ -1626,90 +1841,86 @@
       color: var(--accent-vibrant); font-weight: 500;
     }
     
-    /* ===== RESPONSIVE DESIGN ===== */
-    @media (max-width: 1024px) {
-      .ai-search { width: 220px; max-width: 35vw; }
-      .hero__title { font-size: var(--text-3xl); }
-    }
-    
-    @media (max-width: 768px) {
-      :root { --header-height: 64px; }
-      .header { padding: 0 1rem; }
-      .header__inner { padding: 0 0.5rem; }
-      .logo__main { font-size: var(--text-base); }
-      .logo__sub { display: none; }
-      .ai-search { width: 180px; max-width: 45vw; }
-      .ai-search__input {
-        height: 38px; padding: 0 0.875rem 0 2.5rem;
-        font-size: var(--text-xs);
-      }
-      .ai-search__badge { display: none; }
-      .hero { padding-top: calc(var(--header-height) + 3rem); padding-bottom: 3rem; }
-      .hero__title { font-size: var(--text-3xl); }
-      .hero__subtitle { font-size: var(--text-base); }
-      .section { padding: 3.5rem 0; }
-      .section__title { font-size: var(--text-2xl); }
-      .vehicles-grid {
-        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-        gap: 1.5rem;
-      }
-      .vehicle-card__content { padding: 1.25rem; }
-      .vehicle-card__title { font-size: var(--text-lg); }
-      .vehicle-card__price { font-size: var(--text-xl); }
-      .chatbot-modal {
-        width: 100%; max-width: 100%;
-        border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
-        height: 75vh;
-      }
-      .vehicle-modal__content { padding: 1rem; }
-      .vehicle-info__price { font-size: var(--text-3xl); }
-      .footer__grid { grid-template-columns: 1fr; text-align: center; }
-      .footer__social { justify-content: center; }
-    }
-    
-    @media (max-width: 480px) {
-      .header__actions { gap: 0.5rem; }
-      .ai-search { display: none; }
-      .hero__cta { flex-direction: column; align-items: center; }
-      .btn { width: 100%; max-width: 300px; }
-      .vehicle-card__specs { grid-template-columns: 1fr; }
-      .vehicle-card__actions { flex-direction: column; }
-      .chatbot-toggle {
-        width: 52px; height: 52px; bottom: 1rem; right: 1rem;
-      }
-      .vehicle-gallery__nav { width: 40px; height: 40px; }
-      .vehicle-gallery__thumb { width: 80px; height: 60px; }
-    }
-    
-    /* ===== ACCESSIBILITY & ANIMATIONS ===== */
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-      }
-    }
-    
-    a:focus-visible, button:focus-visible, input:focus-visible {
-      outline: 2px solid var(--accent-vibrant); outline-offset: 2px;
-    }
-    
-    .vehicle-card__img, .vehicle-gallery__img {
-      opacity: 0; transition: opacity 0.4s ease-in;
-    }
-    .vehicle-card__img.loaded, .vehicle-gallery__img.loaded { opacity: 1; }
-    /* ===== LOGO IMAGE ===== */
-.logo__image {
-  width: 42px;       /* Adjust size if needed */
-  height: 42px;
-  object-fit: contain; /* Ensures logo isn't squashed */
-  border-radius: 10px; /* Optional: matches the old rounded corners */
-  background: transparent; /* Remove this if your image needs a background box */
+   /* ===== MOBILE HEADER LAYOUT (768px & below) ===== */
+@media (max-width: 768px) {
+  :root { 
+    --header-height: 110px; /* Taller header to accommodate 2 rows */
+  }
+  
+  .header {
+    height: auto;
+    min-height: 64px;
+    padding: 0.5rem 1rem;
+  }
+  
+  .header__inner {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    grid-template-rows: auto auto;
+    align-items: center;
+    gap: 0.5rem 1rem;
+    padding: 0;
+  }
+  
+  .logo { grid-column: 1; }
+  .hive-badge-link { grid-column: 2; justify-self: end; }
+  
+  .header__actions {
+    display: contents; /* Flattens structure so children join the parent grid */
+  }
+  
+  .ai-search {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    width: 100%;
+    max-width: 100%;
+    order: 2;
+  }
+  
+  .hamburger {
+    grid-column: 3;
+    grid-row: 1;
+    order: 3;
+  }
+  
+  .ai-search__input {
+    height: 44px;
+    font-size: var(--text-sm);
+    padding: 0 1rem 0 2.5rem;
+  }
+  
+  .ai-search__badge { display: none; }
+  
+  /* Keep your existing mobile adjustments below */
+  .logo__main { font-size: var(--text-base); }
+  .logo__sub { display: none; }
+  .hero { padding-top: calc(var(--header-height) + 3rem); padding-bottom: 3rem; }
+  .hero__title { font-size: var(--text-3xl); }
+  .hero__subtitle { font-size: var(--text-base); }
+  .section { padding: 3.5rem 0; }
+  .section__title { font-size: var(--text-2xl); }
+  .vehicles-grid { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.5rem; }
+  .vehicle-card__content { padding: 1.25rem; }
+  .vehicle-card__title { font-size: var(--text-lg); }
+  .vehicle-card__price { font-size: var(--text-xl); }
+  .chatbot-modal { width: 100%; max-width: 100%; border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0; height: 75vh; }
+  .vehicle-modal__content { padding: 1rem; }
+  .vehicle-info__price { font-size: var(--text-3xl); }
+  .footer__grid { grid-template-columns: 1fr; text-align: center; }
+  .footer__social { justify-content: center; }
 }
 
-/* 📱 Optional: Hide text if your image logo already includes "N2 Auto" text */
-@media (max-width: 768px) {
-  .logo__text { display: none; } /* Hides text on mobile for cleaner look */
+/* ===== SMALL MOBILE (480px & below) ===== */
+@media (max-width: 480px) {
+  /* ⚠️ Removed .ai-search { display: none; } so it stays visible */
+  .header__actions { gap: 0.5rem; }
+  .hero__cta { flex-direction: column; align-items: center; }
+  .btn { width: 100%; max-width: 300px; }
+  .vehicle-card__specs { grid-template-columns: 1fr; }
+  .vehicle-card__actions { flex-direction: column; }
+  .chatbot-toggle { width: 52px; height: 52px; bottom: 1rem; right: 1rem; }
+  .vehicle-gallery__nav { width: 40px; height: 40px; }
+  .vehicle-gallery__thumb { width: 80px; height: 60px; }
 }
   </style>
 </head>
@@ -1793,15 +2004,7 @@
           <span class="ai-search__badge">AI</span>
         </div>
         
-        <!-- Cart Button -->
-        <button class="cart-btn" aria-label="View saved vehicles">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="9" cy="21" r="1"></circle>
-            <circle cx="20" cy="21" r="1"></circle>
-            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-          </svg>
-          <span class="cart-btn__count">0</span>
-        </button>
+       
         
         <!-- 3D Hamburger Menu -->
         <button class="hamburger" id="hamburgerBtn" aria-label="Toggle navigation menu" aria-expanded="false">
@@ -1853,6 +2056,82 @@
       <div class="vehicles-grid" id="vehiclesGrid"></div>
     </div>
   </section>
+  <!-- ===== ABOUT BUSINESS SECTION ===== -->
+<section class="section about-business" id="about">
+  <div class="container">
+    <div class="section__header">
+      <h2 class="section__title">About N2 Auto Sandton</h2>
+      <p class="section__subtitle">Sandton's premier destination for luxury, performance & classic vehicles. Built on trust, transparency, and exceptional service.</p>
+    </div>
+
+    <div class="about-grid">
+      <!-- Left: Story & Stats -->
+      <div class="about-content">
+        <div class="about-text">
+          <h3>Our Story</h3>
+          <p>Founded in the heart of Sandton, N2 Auto was born from a passion for exceptional automobiles and a commitment to redefining the car-buying experience. We meticulously curate only the finest luxury, performance, and classic vehicles, ensuring every car that leaves our showroom meets the highest standards of quality, reliability, and value.</p>
+          <p>Whether you're searching for a weekend sports car, a premium family SUV, or a statement executive sedan, our team provides personalized guidance, transparent pricing, and seamless WhatsApp communication from first inquiry to final delivery.</p>
+        </div>
+        
+        <div class="about-stats">
+          <div class="stat-card">
+            <span class="stat-number">500+</span>
+            <span class="stat-label">Vehicles Sold</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">5⭐</span>
+            <span class="stat-label">Customer Rating</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">24/7</span>
+            <span class="stat-label">WhatsApp Support</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Contact & Map -->
+      <div class="about-sidebar">
+        <div class="about-contact-card">
+          <h4>Visit Our Showroom</h4>
+          <div class="contact-item">
+            <span class="contact-icon">📍</span>
+            <div class="contact-details">
+              <strong>Address</strong>
+              <span>49 Andries Street, Wynberg, Sandton, 2090</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <span class="contact-icon">📱</span>
+            <div class="contact-details">
+              <strong>WhatsApp / Call</strong>
+              <a href="https://wa.me/27814297007" target="_blank">+27 81 429 7007 (Dayyaan)</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <span class="contact-icon">✉️</span>
+            <div class="contact-details">
+              <strong>Email</strong>
+              <a href="mailto:info@n2auto.co.za">info@n2auto.co.za</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <span class="contact-icon">🕒</span>
+            <div class="contact-details">
+              <strong>Business Hours</strong>
+              <span>Mon–Fri: 09:00–17:00 | Sat: 09:00–14:00 | Sun: By Appointment</span>
+            </div>
+          </div>
+          <a href="https://wa.me/27814297007" target="_blank" class="btn btn--primary" style="margin-top: 1.5rem; width: 100%;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+            Chat with Dayyaan
+          </a>
+        </div>
+        
+       
+      </div>
+    </div>
+  </div>
+</section>
 
   
       </div>
@@ -1860,13 +2139,33 @@
   </div>
 
   
-        <div class="about__map" aria-label="Dealership location map">
-          <div style="text-align:center;padding:1rem">
-            <div style="font-size:3rem;margin-bottom:0.5rem">🗺️</div>
-            <div>Interactive Map Loading...</div>
-            <div style="font-size:var(--text-xs);color:var(--text-muted);margin-top:0.5rem">(<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3582.6976725287236!2d28.077868299999995!3d-26.108785899999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e950d3272a8922d%3A0x8759bbca325a501a!2s49%20Andries%20St%2C%20Wynberg%2C%20Sandton%2C%202090!5e0!3m2!1sen!2sza!4v1775653822234!5m2!1sen!2sza" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>)</div>
-          </div>
-        </div>
+       <!-- ===== RESPONSIVE MAP CONTAINER ===== -->
+<div class="about__map" aria-label="Dealership location map">
+  <div class="map-wrapper">
+    <iframe 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3582.6976725287236!2d28.077868299999995!3d-26.108785899999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e950d3272a8922d%3A0x8759bbca325a501a!2s49%20Andries%20St%2C%20Wynberg%2C%20Sandton%2C%202090!5e0!3m2!1sen!2sza!4v1775653822234!5m2!1sen!2sza" 
+      width="100%" 
+      height="100%" 
+      style="border:0;" 
+      allowfullscreen="" 
+      loading="lazy" 
+      referrerpolicy="no-referrer-when-downgrade"
+      title="N2 Auto Sandton Location">
+    </iframe>
+    <div class="map-overlay">
+      <a href="https://maps.app.goo.gl/your-short-link" target="_blank" class="map-link-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+          <circle cx="12" cy="10" r="3"></circle>
+        </svg>
+        Open in Google Maps
+      </a>
+    </div>
+  </div>
+  <div class="map-address">
+    <strong>📍 49 Andries Street, Wynberg, Sandton, 2090</strong>
+  </div>
+</div>
       </div>
     </div>
   </section>
@@ -1920,6 +2219,7 @@
           </ul>
         </div>
         <div>
+          
           <div class="footer__title">Contact</div>
           <ul class="footer__list">
             <li class="footer__item"><a href="https://wa.me/27814297007" target="_blank" class="footer__link"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:4px"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>+27 81 429 7007</a></li>
@@ -2690,9 +2990,26 @@ const vehicles = [
     description: "Executive sedan with legendary Audi build quality, efficient TDI diesel engine, and smooth Multitronic transmission. Ideal for high-mileage professionals seeking comfort and economy.",
     features: ["TDI Diesel", "MMI Navigation", "Leather Interior", "Xenon Plus", "Park Assist", "Cruise Control", "Bluetooth", "Auto Wipers", "Dual Climate"],
     images: [
-      "https://images.unsplash.com/photo-1605735789129-5c6a7f6e7e6c?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=1200&q=80"
+     "2014-audi/3.jpg",
+      "2014-audi/2.jpg",
+      "2014-audi/1.jpg",
+      "2014-audi/4.jpg",
+      "2014-audi/5.jpg",
+      "2014-audi/6.jpg",
+      "2014-audi/7.jpg",
+      "2014-audi/8.jpg",
+      "2014-audi/9.jpg",
+      "2014-audi/10.jpg",
+       "2014-audi/11.jpg",
+      "2014-audi/12.jpg",
+      "2014-audi/13.jpg",
+      "2014-audi/14.jpg",
+      "2014-audi/15.jpg",
+      "2014-audi/16.jpg",
+      "2014-audi/17.jpg",
+      "2014-audi/18.jpg",
+       "2014-audi/19.jpg",
+      "2014-audi/20.jpg"
     ],
     stockNumber: "A6-TDI-017",
     badge: "EXECUTIVE",
@@ -2718,9 +3035,26 @@ const vehicles = [
     description: "Pioneering four-door coupe with stunning design, luxurious interior, and smooth V6 performance. The CLS redefined automotive elegance. Well-maintained example with recent service.",
     features: ["Leather Interior", "COMAND Navigation", "Parktronic", "Heated Seats", "Xenon Headlights", "Electric Seats", "Climate Control", "Premium Sound", "Cruise Control"],
     images: [
-      "https://images.unsplash.com/photo-1606150347449-1c8234b9c6f9?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1503376763036-066120622c74?auto=format&fit=crop&w=1200&q=80"
+      "2008-mercedes/3.jpg",
+      "2008-mercedes/2.jpg",
+      "2008-mercedes/1.jpg",
+      "2008-mercedes/4.jpg",
+      "2008-mercedes/5.jpg",
+      "2008-mercedes/6.jpg",
+      "2008-mercedes/7.jpg",
+      "2008-mercedes/8.jpg",
+      "2008-mercedes/9.jpg",
+      "2008-mercedes/10.jpg",
+       "2008-mercedes/11.jpg",
+      "2008-mercedes/12.jpg",
+      "2008-mercedes/13.jpg",
+      "2008-mercedes/14.jpg",
+      "2008-mercedes/15.jpg",
+      "2008-mercedes/16.jpg",
+      "2008-mercedes/17.jpg",
+      "2008-mercedes/18.jpg",
+       "2008-mercedes/19.jpg",
+      "2008-mercedes/20.jpg"
     ],
     stockNumber: "CLS-350-018",
     badge: "CLASSIC",
@@ -2746,9 +3080,26 @@ const vehicles = [
     description: "Premium compact hatchback with efficient turbocharged engine, lightning-fast S tronic gearbox, and Audi's renowned build quality. Perfect for urban professionals. Full service history.",
     features: ["TFSI Engine", "MMI Navigation", "Leather Steering Wheel", "Bluetooth", "Cruise Control", "Auto Lights", "Rain Sensors", "Electric Mirrors", "Start/Stop System"],
     images: [
-      "https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1605735789129-5c6a7f6e7e6c?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=1200&q=80"
+       "2017-audi/3.jpg",
+      "2017-audi/2.jpg",
+      "2017-audi/1.jpg",
+      "2017-audi/4.jpg",
+      "2017-audi/5.jpg",
+      "2017-audi/6.jpg",
+      "2017-audi/7.jpg",
+      "2017-audi/8.jpg",
+      "2017-audi/9.jpg",
+      "2017-audi/10.jpg",
+       "2017-audi/11.jpg",
+      "2017-audi/12.jpg",
+      "2017-audi/13.jpg",
+      "2017-audi/14.jpg",
+      "2017-audi/15.jpg",
+      "2017-audi/16.jpg",
+      "2017-audi/17.jpg",
+      "2017-audi/18.jpg",
+       "2017-audi/19.jpg",
+      "2017-audi/20.jpg"
     ],
     stockNumber: "A3-TFSI-019",
     badge: "COMPACT",
@@ -2757,33 +3108,58 @@ const vehicles = [
     financeUrl: "https://www.carsonsale.co.za/forms/finance_application_full.php?co_id=209"
   },
   
-  // 20. 2019 Porsche Panamera Turbo (Original Featured)
   {
-    id: "n2a-020",
-    make: "Porsche",
-    model: "Panamera Turbo",
-    year: 2019,
-    price: 499995,
-    currency: "ZAR",
-    saleType: "Used",
-    monthlyPayment: 10100,
-    mileage: 115000,
-    transmission: "PDK Automatic",
-    fuel: "Petrol",
-    color: "Jet Black Metallic",
-    description: "Full service history, one owner, panoramic roof, sport chrono package, premium leather interior, upgraded exhaust system. This stunning Panamera Turbo combines luxury with blistering performance.",
-    features: ["Leather Interior", "Navigation", "360° Camera", "Sport Exhaust", "Panoramic Roof", "Sport Chrono", "Adaptive Cruise Control", "Lane Assist", "Heated & Ventilated Seats"],
-    images: [
-      "https://images.unsplash.com/photo-1614613535308-eb55958cc66e?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1503376763036-066120622c74?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=1200&q=80"
-    ],
-    stockNumber: "PAN-TURBO-020",
-    badge: "FEATURED",
-    whatsappMessage: "Hi N2 Auto, I'm interested in the 2019 Porsche Panamera Turbo . Is it still available?",
-    detailUrl: "https://viewlist.co.za/unlisted/3_details.php?co_id=209&car_id=115314",
-    financeUrl: "https://www.carsonsale.co.za/forms/finance_application_full.php?co_id=209"
-  }
+  id: "n2a-022",
+  make: "Hyundai",
+  model: "Staria 2.2D Elite 9-Seater",
+  year: 2022,
+  price: 749995,
+  currency: "ZAR",
+  mileage: 58000,
+  transmission: "8-Speed Automatic",
+  fuel: "Diesel",
+  color: "Shimmering Silver",
+  description: "Discover the perfect blend of style, space, and reliability with the 2022 Hyundai Staria 2.2D Elite 9-seater. Powered by a robust 2.2L turbo diesel engine delivering 130 kW and 430 Nm of torque, this MPV offers a smooth, responsive ride with exceptional fuel efficiency (8.7 L/100km) and an impressive 862 km range. Finished in stunning Shimmering Silver with full franchise service history and comprehensive warranty coverage. Ideal for large families, shuttle services, or business travel where comfort meets capability.",
+  features: [
+    "9-Seater Capacity",
+    "2.2L Turbo Diesel",
+    "130 kW / 430 Nm",
+    "8-Speed Automatic",
+    "Full Service History",
+    "Factory Warranty",
+    "Advanced Safety Suite",
+    "Premium Interior Trim",
+    "Climate Control Zones",
+    "USB Charging Ports",
+    "Cruise Control",
+    "Reverse Camera"
+  ],
+  images: [
+  "2022-hyundai/3.jpg",
+      "2022-hyundai/2.jpg",
+      "2022-hyundai/1.jpg",
+      "2022-hyundai/4.jpg",
+      "2022-hyundai/5.jpg",
+      "2022-hyundai/6.jpg",
+      "2022-hyundai/7.jpg",
+      "2022-hyundai/8.jpg",
+      "2022-hyundai/9.jpg",
+      "2022-hyundai/10.jpg",
+       "2022-hyundai/11.jpg",
+      "2022-hyundai/12.jpg",
+      "2022-hyundai/13.jpg",
+      "2022-hyundai/14.jpg",
+      "2022-hyundai/15.jpg",
+      "2022-hyundai/16.jpg",
+      "2022-hyundai/17.jpg",
+      "2022-hyundai/18.jpg",
+       "2022-hyundai/19.jpg",
+      "2022-hyundai/20.jpg"
+  ],
+  stockNumber: "STARIA-ELITE-012",
+  badge: "FAMILY",
+  whatsappMessage: "Hi N2 Auto, I'm interested in the 2022 Hyundai Staria 2.2D Elite 9-Seater (Stock #STARIA-ELITE-012, Ref: 20928462903). Is it still available?"
+}
 ];
     // ===== DOM ELEMENTS =====
     const vehiclesGrid = document.getElementById('vehiclesGrid');
