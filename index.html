@@ -101,11 +101,7 @@
 }
 .contact-details a:hover { color: var(--accent-vibrant); }
 
-.about-map {
-  border-radius: var(--border-radius-lg); overflow: hidden;
-  border: 1px solid var(--border-color); background: var(--card-bg);
-}
-/* ===== RESPONSIVE MAP STYLES ===== */
+/* ===== CLEAN MAP STYLES ===== */
 .about__map {
   border-radius: var(--border-radius-lg);
   overflow: hidden;
@@ -124,12 +120,10 @@
 
 .map-wrapper iframe {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
   border: 0;
-  filter: brightness(0.95) contrast(1.05); /* Subtle dark mode enhancement */
+  filter: brightness(0.95) contrast(1.05);
   transition: filter 0.3s ease;
 }
 
@@ -137,103 +131,12 @@
   filter: brightness(1) contrast(1.1);
 }
 
-/* Overlay button for mobile tap-to-open */
-.map-overlay {
-  position: absolute;
-  bottom: 1rem;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 5;
-  display: flex;
-  justify-content: center;
-  width: calc(100% - 2rem);
-  pointer-events: none; /* Let clicks pass through to map */
-}
-
-.map-link-btn {
-  pointer-events: auto;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: rgba(10, 10, 15, 0.92);
-  backdrop-filter: blur(10px);
-  border: 1px solid var(--border-color);
-  color: var(--text-primary);
-  padding: 0.6rem 1.25rem;
-  border-radius: 50px;
-  font-size: var(--text-sm);
-  font-weight: 600;
-  text-decoration: none;
-  transition: var(--transition);
-  box-shadow: var(--shadow-sm);
-}
-
-.map-link-btn:hover {
-  background: var(--accent-vibrant);
-  color: var(--primary-dark);
-  border-color: var(--accent-vibrant);
-  transform: translateY(-2px);
-}
-
-.map-address {
-  padding: 1rem 1.5rem;
-  background: var(--card-bg);
-  border-top: 1px solid var(--border-color);
-  text-align: center;
-  font-size: var(--text-sm);
-  color: var(--text-secondary);
-}
-
-.map-address strong {
-  color: var(--text-primary);
-  font-weight: 600;
-}
-
-/* ===== MOBILE OPTIMIZATIONS ===== */
+/* Mobile adjustments */
 @media (max-width: 768px) {
-  .map-wrapper {
-    aspect-ratio: 3/2; /* Taller on mobile for better visibility */
-  }
-  
-  .map-overlay {
-    bottom: 0.75rem;
-    width: calc(100% - 1.5rem);
-  }
-  
-  .map-link-btn {
-    padding: 0.5rem 1rem;
-    font-size: var(--text-xs);
-    width: 100%;
-    justify-content: center;
-  }
-  
-  .map-address {
-    padding: 0.875rem 1.25rem;
-    font-size: var(--text-xs);
-  }
+  .map-wrapper { aspect-ratio: 3/2; }
 }
-
 @media (max-width: 480px) {
-  .map-wrapper {
-    aspect-ratio: 1/1; /* Square on very small screens */
-  }
-  
-  .map-link-btn {
-    font-size: var(--text-xs);
-    padding: 0.45rem 0.9rem;
-  }
-}
-
-/* ===== DARK MODE MAP TWEAKS (Optional) ===== */
-/* If you want a truly dark-styled map, add &style= parameters to the iframe src:
-   ...&style=element:geometry%7Ccolor:0x242f3e&style=element:labels.text.fill%7Ccolor:0x746855...
-   Full dark style generator: https://mapstyle.withgoogle.com/
-*/
-
-@media (max-width: 768px) {
-  .about-stats { grid-template-columns: 1fr; }
-  .about-contact-card { padding: 1.5rem; }
-  .about-map iframe { height: 200px; }
+  .map-wrapper { aspect-ratio: 1/1; }
 }
     /* ===== ADVANCED VEHICLE MODAL ===== */
 .vehicle-modal-overlay {
@@ -2139,11 +2042,11 @@
   </div>
 
   
-       <!-- ===== RESPONSIVE MAP CONTAINER ===== -->
+      <!-- ===== CLEAN RESPONSIVE MAP (Location Pin Only) ===== -->
 <div class="about__map" aria-label="Dealership location map">
   <div class="map-wrapper">
     <iframe 
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3582.6976725287236!2d28.077868299999995!3d-26.108785899999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e950d3272a8922d%3A0x8759bbca325a501a!2s49%20Andries%20St%2C%20Wynberg%2C%20Sandton%2C%202090!5e0!3m2!1sen!2sza!4v1775653822234!5m2!1sen!2sza" 
+      "<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3582.6976725287236!2d28.077868299999995!3d-26.108785899999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e950d3272a8922d%3A0x8759bbca325a501a!2s49%20Andries%20St%2C%20Wynberg%2C%20Sandton%2C%202090!5e0!3m2!1sen!2sza!4v1775904751563!5m2!1sen!2sza" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>"  
       width="100%" 
       height="100%" 
       style="border:0;" 
@@ -2152,18 +2055,6 @@
       referrerpolicy="no-referrer-when-downgrade"
       title="N2 Auto Sandton Location">
     </iframe>
-    <div class="map-overlay">
-      <a href="https://maps.app.goo.gl/your-short-link" target="_blank" class="map-link-btn">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-          <circle cx="12" cy="10" r="3"></circle>
-        </svg>
-        Open in Google Maps
-      </a>
-    </div>
-  </div>
-  <div class="map-address">
-    <strong>📍 49 Andries Street, Wynberg, Sandton, 2090</strong>
   </div>
 </div>
       </div>
