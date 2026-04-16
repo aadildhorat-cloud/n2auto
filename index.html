@@ -1928,6 +1928,62 @@
           .hive-icon-svg { width: 16px; height: 16px; margin-right: 6px; }
           .hive-text { font-size: 11px; }
           .hive-subtext { font-size: 8px; }
+          /* ===== MOBILE COMPACT LIST VIEW ===== */
+.view-all-mobile-btn { display: none; }
+@media (max-width: 768px) {
+  .view-all-mobile-btn { display: inline-flex; }
+}
+
+.vehicles-grid.compact-view {
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+}
+
+.vehicles-grid.compact-view .vehicle-card {
+  flex-direction: row !important;
+  height: auto !important;
+  border-radius: 12px;
+  transition: var(--transition);
+}
+
+.vehicles-grid.compact-view .vehicle-card__image {
+  width: 100px;
+  min-width: 100px;
+  height: 80px;
+  aspect-ratio: auto;
+  border-radius: 0;
+}
+
+.vehicles-grid.compact-view .vehicle-card__content {
+  padding: 0.75rem 1rem;
+  justify-content: center;
+}
+
+/* Hide non-essential elements in compact mode */
+.vehicles-grid.compact-view .vehicle-card__badge,
+.vehicles-grid.compact-view .vehicle-card__specs,
+.vehicles-grid.compact-view .vehicle-card__description,
+.vehicles-grid.compact-view .vehicle-card__actions {
+  display: none !important;
+}
+
+.vehicles-grid.compact-view .vehicle-card__header {
+  margin-bottom: 0;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.25rem;
+}
+
+.vehicles-grid.compact-view .vehicle-card__title {
+  font-size: var(--text-sm);
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+.vehicles-grid.compact-view .vehicle-card__price {
+  font-size: var(--text-base);
+  font-weight: 700;
+}
         }
       </style>
       <a href="https://hivetimes.co.za" class="hive-badge-link" target="_blank" rel="noopener" title="Visit Hive Times">
@@ -2000,6 +2056,15 @@
       <div class="section__header">
         <h2 class="section__title">Featured Vehicles</h2>
         <p class="section__subtitle">Hand-selected luxury and performance vehicles, ready for your next adventure.</p>
+        <button id="viewAllMobileBtn" class="btn btn--secondary view-all-mobile-btn" style="margin-top: 1.25rem; width: auto; padding: 0.6rem 1.2rem; font-size: var(--text-sm);">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 6px;">
+    <rect x="3" y="3" width="7" height="7"></rect>
+    <rect x="14" y="3" width="7" height="7"></rect>
+    <rect x="3" y="14" width="7" height="7"></rect>
+    <rect x="14" y="14" width="7" height="7"></rect>
+  </svg>
+  View All Cars
+</button>
       </div>
       <div class="vehicles-grid" id="vehiclesGrid"></div>
     </div>
@@ -2206,6 +2271,16 @@
 
   <!-- ===== JAVASCRIPT ===== -->
   <script>
+    const viewAllMobileBtn = document.getElementById('viewAllMobileBtn');
+if (viewAllMobileBtn) {
+  viewAllMobileBtn.addEventListener('click', () => {
+    vehiclesGrid.classList.toggle('compact-view');
+    const isCompact = vehiclesGrid.classList.contains('compact-view');
+    viewAllMobileBtn.innerHTML = isCompact 
+      ? `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 6px;"><path d="M4 6h16M4 12h16M4 18h16"/></svg>Grid View`
+      : `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 6px;"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>View All Cars`;
+  });
+}
     // ===== VEHICLE DATA =====
 const vehicles = [
   // 1. 2024 Toyota Land Cruiser 300 GR Sport
