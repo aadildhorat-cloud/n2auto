@@ -2023,6 +2023,7 @@
     <nav class="nav-dropdown" id="navDropdown" aria-label="Main Navigation">
       <div class="nav-dropdown__title">Menu</div>
       <ul class="nav-dropdown__list">
+        <li class="nav-dropdown__item"><a href="https://hivetimes.co.za/" class="nav-dropdown__link"><span class="nav-dropdown__icon">🌐</span>Hive Times</a></li>
         <li class="nav-dropdown__item"><a href="#" class="nav-dropdown__link"><span class="nav-dropdown__icon">🏠</span>Home</a></li>
         <li class="nav-dropdown__item"><a href="#inventory" class="nav-dropdown__link"><span class="nav-dropdown__icon">🚗</span>Inventory</a></li>
         <li class="nav-dropdown__item"><a href="#about" class="nav-dropdown__link"><span class="nav-dropdown__icon">🏢</span>About Business</a></li>
@@ -2049,6 +2050,931 @@
       </div>
     </div>
   </section>
+  <!-- ===== SELL YOUR CAR SECTION ===== -->
+<section class="section sell-car-section" id="sellCar">
+  <div class="container">
+    <div class="section__header">
+      <h2 class="section__title">Sell Your Car</h2>
+      <p class="section__subtitle">Get the best value for your vehicle. Fill in the details below and we'll get back to you within 24 hours.</p>
+    </div>
+
+    <div class="sell-car-container">
+      <!-- Progress Steps -->
+      <div class="sell-car-progress">
+        <div class="progress-step active" data-step="1">
+          <div class="step-number">1</div>
+          <div class="step-label">Personal Details</div>
+        </div>
+        <div class="progress-line"></div>
+        <div class="progress-step" data-step="2">
+          <div class="step-number">2</div>
+          <div class="step-label">Car Details</div>
+        </div>
+      </div>
+
+      <form class="sell-car-form" id="sellCarForm">
+        <!-- Step 1: Personal Details -->
+        <div class="form-step active" data-step="1">
+          <div class="form-step-header">
+            <div class="step-icon">👤</div>
+            <h3>Personal Information</h3>
+          </div>
+          
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="personalName" class="form-label">Full Name *</label>
+              <input type="text" id="personalName" class="form-input" placeholder="John Doe" required>
+            </div>
+
+            <div class="form-group">
+              <label for="personalMobile" class="form-label">Mobile Number *</label>
+              <input type="tel" id="personalMobile" class="form-input" placeholder="+27 81 234 5678" required>
+            </div>
+
+            <div class="form-group">
+              <label for="personalEmail" class="form-label">Email Address *</label>
+              <input type="email" id="personalEmail" class="form-input" placeholder="john@example.com" required>
+            </div>
+
+            <div class="form-group">
+              <label for="personalProvince" class="form-label">Province *</label>
+              <select id="personalProvince" class="form-select" required>
+                <option value="">Select a province</option>
+                <option value="gauteng">Gauteng</option>
+                <option value="western-cape">Western Cape</option>
+                <option value="kwazulu-natal">KwaZulu-Natal</option>
+                <option value="eastern-cape">Eastern Cape</option>
+                <option value="mpumalanga">Mpumalanga</option>
+                <option value="limpopo">Limpopo</option>
+                <option value="north-west">North West</option>
+                <option value="free-state">Free State</option>
+                <option value="northern-cape">Northern Cape</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="personalArea" class="form-label">Area/Suburb *</label>
+              <input type="text" id="personalArea" class="form-input" placeholder="Sandton, Johannesburg" required>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="button" class="btn btn--next" onclick="nextStep(2)">
+              Continue to Car Details
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Step 2: Car Details -->
+        <div class="form-step" data-step="2">
+          <div class="form-step-header">
+            <div class="step-icon">🚗</div>
+            <h3>Vehicle Information</h3>
+          </div>
+
+          <div class="form-group">
+  <label for="carYear" class="form-label">Year *</label>
+  <input 
+    type="number" 
+    id="carYear" 
+    class="form-input" 
+    placeholder="e.g., 2024" 
+    min="1990" 
+    max="2099" 
+    pattern="[0-9]{4}"
+    required
+    oninput="this.value = this.value.slice(0, 4)"
+  >
+  <small class="form-hint">Enter the vehicle year (e.g., 2024)</small>
+</div>
+            <div class="form-group">
+              <label for="carMake" class="form-label">Make *</label>
+              <select id="carMake" class="form-select" required>
+                <option value="">Select make</option>
+                <option value="bmw">BMW</option>
+                <option value="mercedes">Mercedes-Benz</option>
+                <option value="audi">Audi</option>
+                <option value="porsche">Porsche</option>
+                <option value="toyota">Toyota</option>
+                <option value="vw">Volkswagen</option>
+                <option value="ford">Ford</option>
+                <option value="hyundai">Hyundai</option>
+                <option value="jeep">Jeep</option>
+                <option value="mahindra">Mahindra</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="carModel" class="form-label">Model *</label>
+              <input type="text" id="carModel" class="form-input" placeholder="e.g., 3 Series, C-Class, A4" required>
+            </div>
+
+            <div class="form-group">
+              <label for="carVariant" class="form-label">Variant/Trim</label>
+              <input type="text" id="carVariant" class="form-input" placeholder="e.g., M Sport, AMG, S-Line">
+            </div>
+
+            <div class="form-group">
+              <label for="carMileage" class="form-label">Mileage (km) *</label>
+              <input type="number" id="carMileage" class="form-input" placeholder="e.g., 85000" required>
+            </div>
+
+            <div class="form-group">
+              <label for="carServiceHistory" class="form-label">Service History *</label>
+              <select id="carServiceHistory" class="form-select" required>
+                <option value="">Select option</option>
+                <option value="full">Full Service History</option>
+                <option value="partial">Partial Service History</option>
+                <option value="none">No Service History</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="carSpareKeys" class="form-label">Spare Keys *</label>
+              <div class="radio-group">
+                <label class="radio-option">
+                  <input type="radio" name="spareKeys" value="yes" required>
+                  <span class="radio-custom"></span>
+                  <span class="radio-label">Yes</span>
+                </label>
+                <label class="radio-option">
+                  <input type="radio" name="spareKeys" value="no" required>
+                  <span class="radio-custom"></span>
+                  <span class="radio-label">No</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="carVIN" class="form-label">VIN Number</label>
+              <input type="text" id="carVIN" class="form-input" placeholder="17-character VIN">
+            </div>
+
+            <div class="form-group">
+              <label for="carReg" class="form-label">Registration Number *</label>
+              <input type="text" id="carReg" class="form-input" placeholder="CA 123-456" required>
+            </div>
+
+            <div class="form-group full-width">
+              <label for="carPrice" class="form-label">Price Expectation (R) *</label>
+              <div class="price-input-wrapper">
+                <span class="price-prefix">R</span>
+                <input type="number" id="carPrice" class="form-input price-input" placeholder="500000" required>
+              </div>
+              <small class="form-hint">Enter your expected selling price in ZAR</small>
+            </div>
+
+            <div class="form-group full-width">
+              <label for="carDescription" class="form-label">Additional Information</label>
+              <textarea id="carDescription" class="form-textarea" rows="4" placeholder="Tell us about any modifications, accidents, or additional features..."></textarea>
+            </div>
+
+            <div class="form-group full-width">
+              <label class="form-label">Upload Photos</label>
+              <div class="file-upload-area" id="fileUploadArea">
+                <input type="file" id="carPhotos" class="file-input" multiple accept="image/*">
+                <div class="file-upload-content">
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="17 8 12 3 7 8"></polyline>
+                    <line x1="12" y1="3" x2="12" y2="15"></line>
+                  </svg>
+                  <p>Drag & drop photos here or <span class="upload-link">browse</span></p>
+                  <small>Support for JPG, PNG (Max 10MB each)</small>
+                </div>
+                <div class="file-preview" id="filePreview"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="button" class="btn btn--secondary" onclick="previousStep(1)">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+              Back to Personal Details
+            </button>
+            <button type="submit" class="btn btn--primary btn--submit">
+              Submit Vehicle Details
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </form>
+
+      <!-- Success Message -->
+      <div class="form-success" id="formSuccess">
+        <div class="success-icon">✓</div>
+        <h3>Thank You!</h3>
+        <p>Your vehicle details have been submitted successfully. We'll contact you within 24 hours with our best offer.</p>
+        <button class="btn btn--primary" onclick="resetForm()">Submit Another Vehicle</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+/* ===== SELL CAR SECTION STYLES ===== */
+.sell-car-section {
+  background: linear-gradient(135deg, var(--secondary-dark) 0%, var(--primary-dark) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.sell-car-section::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 70%;
+  height: 150%;
+  background: radial-gradient(circle, rgba(0, 212, 170, 0.05) 0%, transparent 70%);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.sell-car-container {
+  max-width: 900px;
+  margin: 0 auto;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-lg);
+  padding: 3rem;
+  position: relative;
+  z-index: 1;
+  box-shadow: var(--shadow-lg);
+}
+
+/* Progress Steps */
+.sell-car-progress {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.progress-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.progress-step.active .step-number {
+  background: var(--accent-vibrant);
+  color: var(--primary-dark);
+  border-color: var(--accent-vibrant);
+}
+
+.progress-step.active .step-label {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.step-number {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--secondary-dark);
+  border: 2px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: var(--text-lg);
+  color: var(--text-secondary);
+  transition: var(--transition);
+}
+
+.step-label {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.progress-line {
+  width: 120px;
+  height: 2px;
+  background: var(--border-color);
+  margin: 0 2rem;
+  position: relative;
+}
+
+.progress-line::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 0%;
+  background: var(--accent-vibrant);
+  transition: width 0.3s ease;
+}
+
+.progress-step.active ~ .progress-line::before,
+.progress-step.active + .progress-line::before {
+  width: 100%;
+}
+
+/* Form Steps */
+.form-step {
+  display: none;
+  animation: fadeIn 0.4s ease;
+}
+
+.form-step.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.form-step-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.step-icon {
+  width: 56px;
+  height: 56px;
+  background: rgba(0, 212, 170, 0.15);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--text-2xl);
+}
+
+.form-step-header h3 {
+  font-family: var(--font-heading);
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* Form Grid */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group.full-width {
+  grid-column: 1 / -1;
+}
+
+.form-label {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  padding: 0.875rem 1.25rem;
+  background: var(--secondary-dark);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  color: var(--text-primary);
+  font-size: var(--text-base);
+  font-family: inherit;
+  transition: var(--transition);
+  outline: none;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  border-color: var(--accent-vibrant);
+  box-shadow: 0 0 0 3px rgba(0, 212, 170, 0.15);
+}
+
+.form-input::placeholder {
+  color: var(--text-muted);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.form-hint {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  margin-top: 0.25rem;
+}
+
+/* Radio Group */
+.radio-group {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.radio-option {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  position: relative;
+}
+
+.radio-option input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.radio-custom {
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--border-color);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+  position: relative;
+}
+
+.radio-custom::after {
+  content: "";
+  width: 12px;
+  height: 12px;
+  background: var(--accent-vibrant);
+  border-radius: 50%;
+  transform: scale(0);
+  transition: transform 0.2s ease;
+}
+
+.radio-option input[type="radio"]:checked + .radio-custom {
+  border-color: var(--accent-vibrant);
+}
+
+.radio-option input[type="radio"]:checked + .radio-custom::after {
+  transform: scale(1);
+}
+
+.radio-label {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+/* Price Input */
+.price-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.price-prefix {
+  position: absolute;
+  left: 1.25rem;
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--accent-vibrant);
+  pointer-events: none;
+}
+
+.price-input {
+  padding-left: 2.5rem;
+  font-weight: 600;
+}
+
+/* File Upload */
+.file-upload-area {
+  position: relative;
+  border: 2px dashed var(--border-color);
+  border-radius: var(--border-radius);
+  padding: 2.5rem;
+  text-align: center;
+  transition: var(--transition);
+  background: var(--secondary-dark);
+}
+
+.file-upload-area:hover,
+.file-upload-area.dragover {
+  border-color: var(--accent-vibrant);
+  background: rgba(0, 212, 170, 0.05);
+}
+
+.file-input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.file-upload-content {
+  pointer-events: none;
+}
+
+.file-upload-content svg {
+  color: var(--accent-vibrant);
+  margin-bottom: 1rem;
+}
+
+.file-upload-content p {
+  color: var(--text-primary);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.upload-link {
+  color: var(--accent-vibrant);
+  text-decoration: underline;
+}
+
+.file-upload-content small {
+  color: var(--text-muted);
+  font-size: var(--text-xs);
+}
+
+.file-preview {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+  pointer-events: none;
+}
+
+.file-preview-item {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 2px solid var(--border-color);
+}
+
+.file-preview-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Form Actions */
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.btn--next,
+.btn--submit {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Success Message */
+.form-success {
+  display: none;
+  text-align: center;
+  padding: 4rem 2rem;
+  animation: fadeIn 0.5s ease;
+}
+
+.form-success.show {
+  display: block;
+}
+
+.success-icon {
+  width: 96px;
+  height: 96px;
+  background: var(--success);
+  color: var(--primary-dark);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  font-weight: 700;
+  margin: 0 auto 2rem;
+  animation: scaleIn 0.5s ease;
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0); }
+  50% { transform: scale(1.1); }
+  to { transform: scale(1); }
+}
+
+.form-success h3 {
+  font-family: var(--font-heading);
+  font-size: var(--text-3xl);
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+.form-success p {
+  color: var(--text-secondary);
+  font-size: var(--text-lg);
+  max-width: 500px;
+  margin: 0 auto 2rem;
+  line-height: 1.6;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .sell-car-container {
+    padding: 2rem 1.5rem;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .progress-line {
+    width: 60px;
+    margin: 0 1rem;
+  }
+
+  .step-label {
+    font-size: var(--text-xs);
+  }
+
+  .form-actions {
+    flex-direction: column-reverse;
+  }
+
+  .form-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .radio-group {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .sell-car-progress {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .progress-line {
+    width: 2px;
+    height: 40px;
+    margin: 0;
+  }
+
+  .progress-line::before {
+    width: 2px !important;
+    height: 0%;
+    transition: height 0.3s ease;
+  }
+
+  .progress-step.active + .progress-line::before {
+    height: 100%;
+  }
+}
+</style>
+
+<script>
+// Generate year options
+function generateYearOptions() {
+  const currentYear = new Date().getFullYear();
+  let options = '';
+  for (let year = currentYear; year >= 1990; year--) {
+    options += `<option value="${year}">${year}</option>`;
+  }
+  return options;
+}
+
+// Form Navigation
+function nextStep(step) {
+  const currentStep = document.querySelector('.form-step.active');
+  const nextStepEl = document.querySelector(`.form-step[data-step="${step}"]`);
+  const progressStep = document.querySelector(`.progress-step[data-step="${step}"]`);
+  
+  // Validate current step
+  if (!validateStep(parseInt(currentStep.dataset.step))) {
+    return;
+  }
+  
+  currentStep.classList.remove('active');
+  nextStepEl.classList.add('active');
+  progressStep.classList.add('active');
+  
+  // Update progress line
+  if (step === 2) {
+    document.querySelector('.progress-line').style.setProperty('--progress', '100%');
+  }
+  
+  window.scrollTo({ top: document.getElementById('sellCar').offsetTop - 100, behavior: 'smooth' });
+}
+
+function previousStep(step) {
+  const currentStep = document.querySelector('.form-step.active');
+  const prevStepEl = document.querySelector(`.form-step[data-step="${step}"]`);
+  const progressStep = document.querySelector(`.progress-step[data-step="2"]`);
+  
+  currentStep.classList.remove('active');
+  prevStepEl.classList.add('active');
+  progressStep.classList.remove('active');
+  
+  window.scrollTo({ top: document.getElementById('sellCar').offsetTop - 100, behavior: 'smooth' });
+}
+
+function validateStep(step) {
+  const currentStepEl = document.querySelector(`.form-step[data-step="${step}"]`);
+  const inputs = currentStepEl.querySelectorAll('input[required], select[required]');
+  let isValid = true;
+  
+  inputs.forEach(input => {
+    if (!input.value.trim()) {
+      isValid = false;
+      input.style.borderColor = 'var(--error)';
+      setTimeout(() => {
+        input.style.borderColor = '';
+      }, 2000);
+    }
+  });
+  
+  if (!isValid) {
+    alert('Please fill in all required fields');
+  }
+  
+  return isValid;
+}
+
+// File Upload Handling
+const fileUploadArea = document.getElementById('fileUploadArea');
+const fileInput = document.getElementById('carPhotos');
+const filePreview = document.getElementById('filePreview');
+
+if (fileUploadArea) {
+  ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+    fileUploadArea.addEventListener(eventName, preventDefaults, false);
+  });
+
+  function preventDefaults(e) {
+    e.preventDefault();
+    e.stopPropagation();
+  }
+
+  ['dragenter', 'dragover'].forEach(eventName => {
+    fileUploadArea.addEventListener(eventName, () => {
+      fileUploadArea.classList.add('dragover');
+    }, false);
+  });
+
+  ['dragleave', 'drop'].forEach(eventName => {
+    fileUploadArea.addEventListener(eventName, () => {
+      fileUploadArea.classList.remove('dragover');
+    }, false);
+  });
+
+  fileUploadArea.addEventListener('drop', handleDrop, false);
+  fileInput.addEventListener('change', handleFiles, false);
+
+  function handleDrop(e) {
+    const dt = e.dataTransfer;
+    const files = dt.files;
+    handleFiles({ target: { files: files } });
+  }
+
+  function handleFiles(e) {
+    const files = e.target.files;
+    previewFiles(files);
+  }
+
+  function previewFiles(files) {
+    filePreview.innerHTML = '';
+    [...files].forEach(file => {
+      if (file.type.startsWith('image/')) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const div = document.createElement('div');
+          div.className = 'file-preview-item';
+          div.innerHTML = `<img src="${e.target.result}" alt="${file.name}">`;
+          filePreview.appendChild(div);
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+  }
+}
+
+// Form Submission
+document.getElementById('sellCarForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  if (!validateStep(2)) {
+    return;
+  }
+  
+  // Show success message
+  document.querySelector('.sell-car-form').style.display = 'none';
+  document.querySelector('.form-success').classList.add('show');
+  
+  // Here you would typically send the form data to your server
+  const formData = {
+    personal: {
+      name: document.getElementById('personalName').value,
+      mobile: document.getElementById('personalMobile').value,
+      email: document.getElementById('personalEmail').value,
+      province: document.getElementById('personalProvince').value,
+      area: document.getElementById('personalArea').value
+    },
+    car: {
+      year: document.getElementById('carYear').value,
+      make: document.getElementById('carMake').value,
+      model: document.getElementById('carModel').value,
+      variant: document.getElementById('carVariant').value,
+      mileage: document.getElementById('carMileage').value,
+      serviceHistory: document.getElementById('carServiceHistory').value,
+      spareKeys: document.querySelector('input[name="spareKeys"]:checked')?.value,
+      vin: document.getElementById('carVIN').value,
+      reg: document.getElementById('carReg').value,
+      price: document.getElementById('carPrice').value,
+      description: document.getElementById('carDescription').value
+    }
+  };
+  
+  console.log('Form Data:', formData);
+  
+  // Send to WhatsApp or your backend
+  // sendToWhatsApp(formData);
+});
+
+function resetForm() {
+  document.getElementById('sellCarForm').reset();
+  document.querySelector('.sell-car-form').style.display = 'block';
+  document.querySelector('.form-success').classList.remove('show');
+  document.querySelectorAll('.progress-step').forEach((step, index) => {
+    step.classList.toggle('active', index === 0);
+  });
+  document.querySelectorAll('.form-step').forEach((step, index) => {
+    step.classList.toggle('active', index === 0);
+  });
+  filePreview.innerHTML = '';
+}
+
+// Optional: Send to WhatsApp
+function sendToWhatsApp(data) {
+  const message = `
+*New Vehicle Submission*
+
+*Personal Details:*
+Name: ${data.personal.name}
+Mobile: ${data.personal.mobile}
+Email: ${data.personal.email}
+Location: ${data.personal.area}, ${data.personal.province}
+
+*Vehicle Details:*
+Year: ${data.car.year}
+Make: ${data.car.make}
+Model: ${data.car.model}
+Variant: ${data.car.variant}
+Mileage: ${data.car.mileage} km
+Service History: ${data.car.serviceHistory}
+Spare Keys: ${data.car.spareKeys}
+VIN: ${data.car.vin}
+Registration: ${data.car.reg}
+Price: R ${parseInt(data.car.price).toLocaleString()}
+
+Description: ${data.car.description}
+  `.trim();
+  
+  const whatsappUrl = `https://wa.me/27814297007?text=${encodeURIComponent(message)}`;
+  window.open(whatsappUrl, '_blank');
+}
+</script>
 
   <!-- ===== VEHICLE INVENTORY ===== -->
   <section class="section" id="inventory">
